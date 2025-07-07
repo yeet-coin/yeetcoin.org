@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YeetCoin - Official Website</title>
   <meta name="description" content="YeetCoin - Meme token on Binance Smart Chain">
-
-  <!-- Open Graph -->
+  
+  <!-- Open Graph for social media -->
   <meta property="og:title" content="YeetCoin - Official Website" />
   <meta property="og:description" content="A Binance Smart Chain meme and community-driven token." />
   <meta property="og:image" content="logo.png" />
@@ -14,7 +14,79 @@
   <meta property="og:type" content="website" />
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    canvas#bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    h1 {
+      color: #ff4040;
+      margin-top: 50px;
+    }
+
+    .box {
+      border: 2px solid #ff4040;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 600px;
+      background: rgba(0, 0, 0, 0.85);
+      position: relative;
+      z-index: 1;
+    }
+
+    a {
+      color: #00ffe1;
+      text-decoration: none;
+    }
+
+    .wallet-buttons {
+      margin: 30px auto;
+    }
+
+    .wallet-buttons button {
+      margin: 10px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background-color: #00ffe1;
+      color: #000;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: #111;
+    }
+
+    footer a {
+      color: yellow;
+    }
+
+    .crypto-prices {
+      margin-top: 20px;
+    }
+
+    .crypto-prices div {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
 <canvas id="bg"></canvas>
@@ -24,13 +96,11 @@
 <div class="box">
   <p>A Binance Smart Chain (BEP20) meme and community-driven token made for high energy and hype moments.</p>
   <p><strong>💎 Contract:</strong><br> 0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79</p>
-  
   <div class="crypto-prices">
     <div><strong>💰 BTC Price:</strong> $<span id="btc-price">Loading...</span></div>
     <div><strong>💰 BNB Price:</strong> $<span id="bnb-price">Loading...</span></div>
     <div><strong>💰 ETH Price:</strong> $<span id="eth-price">Loading...</span></div>
   </div>
-
   <p><strong>🪙 Total Supply:</strong><br> 21,000,000 YEET</p>
   <p><strong>📧 Contact:</strong><br> <a href="mailto:yeet.coin@outlook.com">yeet.coin@outlook.com</a></p>
 </div>
@@ -46,6 +116,64 @@
   <p>© 2025 Yeet Coin. All rights reserved.</p>
 </footer>
 
-<script src="scripts.js"></script>
+<script>
+  // 3D background effect
+  const canvas = document.getElementById("bg");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particlesArray = [];
+  const numberOfParticles = 200;
+
+  for (let i = 0; i < numberOfParticles; i++) {
+    particlesArray.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 3 + 1,
+      speedX: Math.random() * 1 - 0.5,
+      speedY: Math.random() * 1 - 0.5
+    });
+  }
+
+  function animate() {
+    ctx.fillStyle = "#0d0d0d";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#00ffe1";
+    particlesArray.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+      p.x += p.speedX;
+      p.y += p.speedY;
+      if (p.x < 0 || p.x > canvas.width || p.y < 0 || p.y > canvas.height) {
+        p.x = Math.random() * canvas.width;
+        p.y = Math.random() * canvas.height;
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // Fetch live prices every 10 seconds
+  async function fetchCryptoPrices() {
+    try {
+      const proxyUrl = "https://corsproxy.io/?";
+      const apiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,binancecoin,ethereum&vs_currencies=usd";
+      const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
+      const data = await response.json();
+      document.getElementById("btc-price").textContent = data.bitcoin.usd;
+      document.getElementById("bnb-price").textContent = data.binancecoin.usd;
+      document.getElementById("eth-price").textContent = data.ethereum.usd;
+    } catch (error) {
+      console.error("Error fetching crypto prices:", error);
+    }
+  }
+
+  fetchCryptoPrices();
+  setInterval(fetchCryptoPrices, 10000); // Update every 10 seconds
+</script>
 </body>
 </html>
