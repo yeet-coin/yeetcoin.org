@@ -5,126 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YeetCoin - Official Website</title>
   <meta name="description" content="YeetCoin - Meme token on Binance Smart Chain">
+
+  <!-- Open Graph -->
   <meta property="og:title" content="YeetCoin - Official Website" />
   <meta property="og:description" content="A Binance Smart Chain meme and community-driven token." />
   <meta property="og:image" content="logo.png" />
   <meta property="og:url" content="https://www.yeetcoin.org" />
   <meta property="og:type" content="website" />
+
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-      color: #fff;
-      text-align: center;
-      overflow-x: hidden;
-    }
-
-    canvas#bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -2;
-    }
-
-    .logo-overlay {
-      position: absolute;
-      top: 150px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 160px;
-      z-index: 0;
-      filter: drop-shadow(0 0 20px gold);
-      pointer-events: none;
-    }
-
-    h1 {
-      color: #ff4040;
-      margin-top: 50px;
-    }
-
-    .box {
-      position: relative;
-      z-index: 1;
-      border: 2px solid #ff4040;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 30px auto;
-      max-width: 600px;
-      background: rgba(0, 0, 0, 0.85);
-    }
-
-    a {
-      color: #00ffe1;
-      text-decoration: none;
-    }
-
-    .wallet-buttons {
-      margin: 30px auto;
-    }
-
-    .wallet-buttons button {
-      margin: 10px;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      background-color: #00ffe1;
-      color: #000;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding: 20px;
-      background: #111;
-    }
-
-    footer a {
-      color: yellow;
-    }
-
-    .crypto-prices {
-      margin-top: 20px;
-    }
-
-    .crypto-prices div {
-      margin: 10px 0;
-      font-size: 18px;
-      color: #fff;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="bg"></canvas>
-  <img src="logo.png" alt="YeetCoin Logo" class="logo-overlay" />
+<canvas id="bg"></canvas>
 
-  <h1>🚀 YeetCoin ($YEET)</h1>
+<h1>🚀 YeetCoin ($YEET)</h1>
 
-  <div class="box">
-    <p>A Binance Smart Chain (BEP20) meme and community-driven token made for high energy and hype moments.</p>
-    <p><strong>💎 Contract:</strong><br> 0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79</p>
-    <div class="crypto-prices">
-      <div><strong>💰 BTC Price:</strong> $<span id="btc-price">Loading...</span></div>
-      <div><strong>💰 BNB Price:</strong> $<span id="bnb-price">Loading...</span></div>
-      <div><strong>💰 ETH Price:</strong> $<span id="eth-price">Loading...</span></div>
-    </div>
-    <p><strong>🪙 Total Supply:</strong><br> 21,000,000 YEET</p>
-    <p><strong>📧 Contact:</strong><br> <a href="mailto:yeet.coin@outlook.com">yeet.coin@outlook.com</a></p>
+<div class="box">
+  <p>A Binance Smart Chain (BEP20) meme and community-driven token made for high energy and hype moments.</p>
+  <p><strong>💎 Contract:</strong><br> 0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79</p>
+  
+  <div class="crypto-prices">
+    <div><strong>💰 BTC Price:</strong> $<span id="btc-price">Loading...</span></div>
+    <div><strong>💰 BNB Price:</strong> $<span id="bnb-price">Loading...</span></div>
+    <div><strong>💰 ETH Price:</strong> $<span id="eth-price">Loading...</span></div>
   </div>
 
-  <div class="wallet-buttons">
-    <button onclick="window.open('https://trustwallet.com', '_blank')">Trust Wallet</button>
-    <button onclick="window.open('https://metamask.io', '_blank')">MetaMask</button>
-    <button onclick="window.open('https://www.binance.com', '_blank')">Binance</button>
-    <button onclick="window.open('https://www.okx.com', '_blank')">OKX Wallet</button>
-  </div>
+  <p><strong>🪙 Total Supply:</strong><br> 21,000,000 YEET</p>
+  <p><strong>📧 Contact:</strong><br> <a href="mailto:yeet.coin@outlook.com">yeet.coin@outlook.com</a></p>
+</div>
 
-  <footer>
-    <p>© 2025 Yeet Coin. All rights reserved.</p>
-  </footer>
+<div class="wallet-buttons">
+  <button onclick="window.open('https://trustwallet.com', '_blank')">Trust Wallet</button>
+  <button onclick="window.open('https://metamask.io', '_blank')">MetaMask</button>
+  <button onclick="window.open('https://www.binance.com', '_blank')">Binance</button>
+  <button onclick="window.open('https://www.okx.com', '_blank')">OKX Wallet</button>
+</div>
 
-  <script src="scripts.js"></script>
+<footer>
+  <p>© 2025 Yeet Coin. All rights reserved.</p>
+</footer>
+
+<script src="scripts.js"></script>
 </body>
 </html>
