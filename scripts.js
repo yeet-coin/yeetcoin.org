@@ -38,12 +38,12 @@ function animate() {
 
 animate();
 
-// Fetch live prices
+// Fetch live prices with CORS proxy to avoid browser blocks
 async function fetchCryptoPrices() {
   try {
-    const response = await fetch(
-      'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,binancecoin,ethereum&vs_currencies=usd'
-    );
+    const proxyUrl = "https://corsproxy.io/?";
+    const apiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,binancecoin,ethereum&vs_currencies=usd";
+    const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
     const data = await response.json();
     document.getElementById("btc-price").textContent = data.bitcoin.usd;
     document.getElementById("bnb-price").textContent = data.binancecoin.usd;
@@ -53,4 +53,8 @@ async function fetchCryptoPrices() {
   }
 }
 
+// Initial fetch
 fetchCryptoPrices();
+
+// Refresh prices every 10 seconds
+setInterval(fetchCryptoPrices, 10000);
