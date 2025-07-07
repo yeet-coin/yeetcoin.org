@@ -5,14 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YeetCoin - Official Website</title>
   <meta name="description" content="YeetCoin - Meme token on Binance Smart Chain">
-  
-  <!-- Open Graph for social media -->
   <meta property="og:title" content="YeetCoin - Official Website" />
   <meta property="og:description" content="A Binance Smart Chain meme and community-driven token." />
   <meta property="og:image" content="logo.png" />
   <meta property="og:url" content="https://www.yeetcoin.org" />
   <meta property="og:type" content="website" />
-
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
@@ -28,7 +25,18 @@
       position: fixed;
       top: 0;
       left: 0;
-      z-index: -1;
+      z-index: -2;
+    }
+
+    .logo-overlay {
+      position: absolute;
+      top: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      z-index: 0;
+      filter: drop-shadow(0 0 20px gold);
+      pointer-events: none;
     }
 
     h1 {
@@ -37,12 +45,14 @@
     }
 
     .box {
+      position: relative;
+      z-index: 1;
       border: 2px solid #ff4040;
       border-radius: 12px;
       padding: 20px;
       margin: 30px auto;
       max-width: 600px;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
     }
 
     a {
@@ -87,53 +97,34 @@
   </style>
 </head>
 <body>
-<canvas id="bg"></canvas>
+  <canvas id="bg"></canvas>
+  <img src="logo.png" alt="YeetCoin Logo" class="logo-overlay" />
 
-<img src="logo.png" alt="YeetCoin" width="150" />
+  <h1>🚀 YeetCoin ($YEET)</h1>
 
-<h1>🚀 YeetCoin ($YEET)</h1>
-
-<div class="box">
-  <p>A Binance Smart Chain (BEP20) meme and community-driven token made for high energy and hype moments.</p>
-  <p><strong>💎 Contract:</strong><br> 0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79</p>
-  <div class="crypto-prices">
-    <div><strong>💰 BTC Price:</strong> $<span id="btc-price">Loading...</span></div>
-    <div><strong>💰 BNB Price:</strong> $<span id="bnb-price">Loading...</span></div>
-    <div><strong>💰 ETH Price:</strong> $<span id="eth-price">Loading...</span></div>
+  <div class="box">
+    <p>A Binance Smart Chain (BEP20) meme and community-driven token made for high energy and hype moments.</p>
+    <p><strong>💎 Contract:</strong><br> 0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79</p>
+    <div class="crypto-prices">
+      <div><strong>💰 BTC Price:</strong> $<span id="btc-price">Loading...</span></div>
+      <div><strong>💰 BNB Price:</strong> $<span id="bnb-price">Loading...</span></div>
+      <div><strong>💰 ETH Price:</strong> $<span id="eth-price">Loading...</span></div>
+    </div>
+    <p><strong>🪙 Total Supply:</strong><br> 21,000,000 YEET</p>
+    <p><strong>📧 Contact:</strong><br> <a href="mailto:yeet.coin@outlook.com">yeet.coin@outlook.com</a></p>
   </div>
-  <p><strong>🪙 Total Supply:</strong><br> 21,000,000 YEET</p>
-  <p><strong>📧 Contact:</strong><br> <a href="mailto:yeet.coin@outlook.com">yeet.coin@outlook.com</a></p>
-</div>
 
-<div class="wallet-buttons">
-  <button onclick="window.open('https://trustwallet.com', '_blank')">Trust Wallet</button>
-  <button onclick="window.open('https://metamask.io', '_blank')">MetaMask</button>
-  <button onclick="window.open('https://www.binance.com', '_blank')">Binance</button>
-  <button onclick="window.open('https://www.okx.com', '_blank')">OKX Wallet</button>
-</div>
+  <div class="wallet-buttons">
+    <button onclick="window.open('https://trustwallet.com', '_blank')">Trust Wallet</button>
+    <button onclick="window.open('https://metamask.io', '_blank')">MetaMask</button>
+    <button onclick="window.open('https://www.binance.com', '_blank')">Binance</button>
+    <button onclick="window.open('https://www.okx.com', '_blank')">OKX Wallet</button>
+  </div>
 
-<footer>
-  <p>© 2025 Yeet Coin. All rights reserved.</p>
-</footer>
+  <footer>
+    <p>© 2025 Yeet Coin. All rights reserved.</p>
+  </footer>
 
-<script>
-  async function fetchCryptoPrices() {
-    try {
-      const proxyUrl = "https://corsproxy.io/?";
-      const apiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,binancecoin,ethereum&vs_currencies=usd";
-      const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
-      const data = await response.json();
-      document.getElementById("btc-price").textContent = data.bitcoin.usd;
-      document.getElementById("bnb-price").textContent = data.binancecoin.usd;
-      document.getElementById("eth-price").textContent = data.ethereum.usd;
-    } catch (error) {
-      console.error('Error fetching crypto prices:', error);
-    }
-  }
-
-  fetchCryptoPrices();
-</script>
-
-<script src="scripts.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
