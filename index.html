@@ -1,10 +1,18 @@
-<img src="yeetcoin-logo.png" alt="YeetCoin Logo" width="150" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YeetCoin - Official Website</title>
+  <meta name="description" content="YeetCoin - Meme token on Binance Smart Chain">
+  
+  <!-- Open Graph for social media -->
+  <meta property="og:title" content="YeetCoin - Official Website" />
+  <meta property="og:description" content="A Binance Smart Chain meme and community-driven token." />
+  <meta property="og:image" content="logo.png" />
+  <meta property="og:url" content="https://www.yeetcoin.org" />
+  <meta property="og:type" content="website" />
+
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
@@ -81,6 +89,8 @@
 <body>
 <canvas id="bg"></canvas>
 
+<img src="logo.png" alt="YeetCoin" width="150" />
+
 <h1>🚀 YeetCoin ($YEET)</h1>
 
 <div class="box">
@@ -106,74 +116,7 @@
   <p>© 2025 Yeet Coin. All rights reserved.</p>
 </footer>
 
-<script>
-  // 3D background effect with particles
-  const canvas = document.getElementById("bg");
-  const ctx = canvas.getContext("2d");
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  let particlesArray = [];
-  const numberOfParticles = 200;
-
-  for (let i = 0; i < numberOfParticles; i++) {
-    particlesArray.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      size: Math.random() * 3 + 1,
-      speedX: Math.random() * 1 - 0.5,
-      speedY: Math.random() * 1 - 0.5
-    });
-  }
-
-  function animate() {
-    ctx.fillStyle = "#0d0d0d";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#00ffe1";
-    particlesArray.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fill();
-      p.x += p.speedX;
-      p.y += p.speedY;
-      if (p.x < 0 || p.x > canvas.width || p.y < 0 || p.y > canvas.height) {
-        p.x = Math.random() * canvas.width;
-        p.y = Math.random() * canvas.height;
-      }
-    });
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-
-  // Fetch live prices for BTC, BNB, and ETH
-  async function fetchCryptoPrices() {
-    try {
-      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,binancecoin,ethereum&vs_currencies=usd');
-      const data = await response.json();
-      
-      // Update the prices on the page
-      document.getElementById("btc-price").textContent = data.bitcoin.usd;
-      document.getElementById("bnb-price").textContent = data.binancecoin.usd;
-      document.getElementById("eth-price").textContent = data.ethereum.usd;
-    } catch (error) {
-      console.error('Error fetching crypto prices:', error);
-    }
-  }
-
-  fetchCryptoPrices();
-</script>
+<!-- External script -->
+<script src="scripts.js"></script>
 </body>
 </html>
-<head>
-  <title>Your Site Title</title>
-  <meta name="description" content="A brief description of your site.">
-  
-  <!-- Open Graph for social media -->
-  <meta property="og:title" content="Your Site Title" />
-  <meta property="og:description" content="A brief description of your site." />
-  <meta property="og:image" content="image-url.jpg" />
-  <meta property="og:url" content="https://www.yeetcoin.org" />
-  <meta property="og:type" content="website" />
-</head>
