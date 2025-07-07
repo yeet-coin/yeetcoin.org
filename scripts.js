@@ -38,7 +38,7 @@ function animate() {
 
 animate();
 
-// Fetch live prices with CORS proxy to avoid browser blocks
+// Live Price Updater (every 10 seconds)
 async function fetchCryptoPrices() {
   try {
     const proxyUrl = "https://corsproxy.io/?";
@@ -53,8 +53,5 @@ async function fetchCryptoPrices() {
   }
 }
 
-// Initial fetch
 fetchCryptoPrices();
-
-// Refresh prices every 10 seconds
-setInterval(fetchCryptoPrices, 10000);
+setInterval(fetchCryptoPrices, 10000); // refresh every 10 seconds
