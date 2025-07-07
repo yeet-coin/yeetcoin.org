@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YeetCoin - Official Website</title>
   <meta name="description" content="YeetCoin - Meme token on Binance Smart Chain">
-
   <meta property="og:title" content="YeetCoin - Official Website" />
   <meta property="og:description" content="A Binance Smart Chain meme and community-driven token." />
   <meta property="og:url" content="https://www.yeetcoin.org" />
   <meta property="og:type" content="website" />
-
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
@@ -21,14 +19,12 @@
       text-align: center;
       overflow-x: hidden;
     }
-
     canvas#bg {
       position: fixed;
       top: 0;
       left: 0;
       z-index: -1;
     }
-
     nav {
       background: #111;
       padding: 10px 0;
@@ -36,19 +32,21 @@
       top: 0;
       z-index: 2;
     }
-
     nav a {
       color: #00ffe1;
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
     }
-
     h1 {
       color: #ff4040;
       margin-top: 40px;
     }
-
+    #countdown {
+      font-size: 24px;
+      margin-top: 20px;
+      color: yellow;
+    }
     .box {
       border: 2px solid #ff4040;
       border-radius: 12px;
@@ -59,16 +57,13 @@
       position: relative;
       z-index: 1;
     }
-
     a {
       color: #00ffe1;
       text-decoration: none;
     }
-
     .wallet-buttons {
       margin: 30px auto;
     }
-
     .wallet-buttons button {
       margin: 10px;
       padding: 12px 20px;
@@ -79,7 +74,6 @@
       background-color: #00ffe1;
       color: #000;
     }
-
     .buy-button {
       display: inline-block;
       margin-top: 20px;
@@ -91,27 +85,22 @@
       text-decoration: none;
       font-weight: bold;
     }
-
     .crypto-prices {
       margin-top: 20px;
     }
-
     .crypto-prices div {
       margin: 10px 0;
       font-size: 18px;
     }
-
     .chart-container {
       margin: 40px auto;
       max-width: 720px;
     }
-
     footer {
       margin-top: 40px;
       padding: 20px;
       background: #111;
     }
-
     footer a {
       color: yellow;
     }
@@ -124,10 +113,11 @@
   <a href="#home">Home</a>
   <a href="#about">About</a>
   <a href="#tokenomics">Tokenomics</a>
-  <a href="https://pancakeswap.finance/swap?outputCurrency=0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79" target="_blank">Buy $YEET</a>
+  <a href="#" id="buyNav" style="display:none;" target="_blank">Buy $YEET</a>
 </nav>
 
 <h1 id="home">🚀 YeetCoin ($YEET)</h1>
+<div id="countdown">⏳ Loading launch countdown...</div>
 
 <div class="box">
   <p>A Binance Smart Chain (BEP20) meme and community-driven token made for high energy and hype moments.</p>
@@ -142,12 +132,11 @@
   <p><strong>🪙 Total Supply:</strong><br> 21,000,000 YEET</p>
   <p><strong>📧 Contact:</strong><br> <a href="mailto:yeet.coin@outlook.com">yeet.coin@outlook.com</a></p>
 
-  <a class="buy-button" href="https://pancakeswap.finance/swap?outputCurrency=0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79" target="_blank">Buy $YEET</a>
+  <a id="buyButton" class="buy-button" href="https://pancakeswap.finance/swap?outputCurrency=0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79" target="_blank" style="display:none;">Buy $YEET</a>
 </div>
 
 <div class="chart-container">
-  <!-- TradingView Widget -->
-  <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_d4c21&symbol=BINANCE:BNBUSDT&interval=30&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=[]&theme=dark&style=1&timezone=Etc/UTC&withdateranges=1&hideideas=1&studies_overrides={}&overrides={}" width="100%" height="400" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+  <iframe src="https://www.tradingview.com/widgetembed/?symbol=BINANCE:BNBUSDT&interval=30&theme=dark&style=1&hideideas=1" width="100%" height="400" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
 </div>
 
 <div class="wallet-buttons">
@@ -164,14 +153,10 @@
 <script>
   const canvas = document.getElementById("bg");
   const ctx = canvas.getContext("2d");
-
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
   let particlesArray = [];
-  const numberOfParticles = 200;
-
-  for (let i = 0; i < numberOfParticles; i++) {
+  for (let i = 0; i < 200; i++) {
     particlesArray.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -180,7 +165,6 @@
       speedY: Math.random() * 1 - 0.5
     });
   }
-
   function animate() {
     ctx.fillStyle = "#0d0d0d";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -198,7 +182,6 @@
     });
     requestAnimationFrame(animate);
   }
-
   animate();
 
   async function fetchCryptoPrices() {
@@ -214,9 +197,36 @@
       console.error("Error fetching crypto prices:", error);
     }
   }
-
   fetchCryptoPrices();
   setInterval(fetchCryptoPrices, 10000);
+
+  function startCountdown() {
+    const launchDate = new Date("2025-07-18T18:00:00Z").getTime();
+    const countdownEl = document.getElementById("countdown");
+    const buyButton = document.getElementById("buyButton");
+    const buyNav = document.getElementById("buyNav");
+
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance < 0) {
+        clearInterval(interval);
+        countdownEl.textContent = "🚀 YeetCoin is LIVE!";
+        buyButton.style.display = "inline-block";
+        buyNav.style.display = "inline-block";
+        buyNav.href = buyButton.href;
+      } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        countdownEl.textContent = `⏳ Launching in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }, 1000);
+  }
+
+  startCountdown();
 </script>
 </body>
 </html>
