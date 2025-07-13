@@ -7,15 +7,16 @@
     <meta name="description" content="YeetCoin - Meme token on Binance Smart Chain"/>
     <meta property="og:title" content="YeetCoin - Official Website" />
     <meta property="og:description" content="A Binance Smart Chain meme and community-driven token." />
-    <meta property="og:url" content="https://www.yeetcoin.org" />
+    <meta property="og:url" content="https://www.yeetcoin.org " />
     <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Language Selector -->
     <div class="language-selector">
-        <select id="language-select" onchange="changeLanguage( )">
+        <select id="language-select" onchange="changeLanguage()">
             <option value="en">🇺🇸 English</option>
             <option value="fr">🇫🇷 Français</option>
             <option value="it">🇮🇹 Italiano</option>
@@ -70,273 +71,272 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="overview" class="hero-section">
-        <div class="hero-content">
-            <img src="logo.png" alt="YeetCoin" class="hero-logo" id="hero-logo">
-            <h1 data-translate="hero_title">The Future of <span class="highlight">Meme</span> Finance</h1>
-            <p data-translate="hero_description">YeetCoin combines the power of community with cutting-edge blockchain technology to create a truly decentralized and engaging financial experience.</p>
-            
-            <!-- Buy Options -->
-            <div class="buy-options" id="buy">
-                <a href="https://pancakeswap.finance/swap?outputCurrency=0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79" target="_blank" class="buy-option">
-                    🥞 <span data-translate="buy_pancakeswap">Buy on PancakeSwap</span>
+    <main>
+        <section id="overview" class="hero-section">
+            <div class="hero-content">
+                <img src="logo.png" alt="YeetCoin Logo" class="hero-logo" id="hero-logo">
+                <h1 data-translate="hero_title">The Future of <span class="highlight">Meme</span> Finance</h1>
+                <p data-translate="hero_description">YeetCoin combines the power of community with cutting-edge blockchain technology to create a truly decentralized and engaging financial experience.</p>
+
+                <!-- Buy Options -->
+                <div class="buy-options" id="buy">
+                    <a href=" https://pancakeswap.finance/swap?outputCurrency=0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79" target="_blank" rel="noopener noreferrer" class="buy-option">
+                        🥞 <span data-translate="buy_pancakeswap">Buy on PancakeSwap</span>
+                    </a>
+                    <a href=" https://bscscan.com/token/0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79 " target="_blank" rel="noopener noreferrer" class="buy-option">
+                        🔍 <span data-translate="view_bscscan">View on BSCScan</span>
+                    </a>
+                </div>
+
+                <a href="#features" class="learn-more-btn">
+                    <span data-translate="learn_more">Learn More</span> →
                 </a>
-                <a href="https://bscscan.com/token/0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79" target="_blank" class="buy-option">
-                    🔍 <span data-translate="view_bscscan">View on BSCScan</span>
-                </a>
-            </div>
-            
-            <a href="#features" class="learn-more-btn">
-                <span data-translate="learn_more">Learn More</span> →
-            </a>
 
-            <!-- Live Stats Cards -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value" id="yeet-price">$0.00001234</div>
-                    <p class="stat-label" data-translate="current_price">Current Price</p>
-                    <div class="stat-change">
-                        📈 <span>+2.5% (24h  )</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="market-cap">$12.34M</div>
-                    <p class="stat-label" data-translate="market_cap">Market Cap</p>
-                    <div class="stat-change">
-                        🌍 <span data-translate="global_reach">Global Reach</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="holders">3</div>
-                    <p class="stat-label" data-translate="total_holders">Total Holders</p>
-                    <div class="stat-change">
-                        👥 <span data-translate="growing_community">Growing Community</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Wallets Section -->
-    <section id="wallets" class="wallets-section">
-        <h2 data-translate="supported_wallets">Supported <span class="highlight">Wallets</span></h2>
-        <div class="wallets-grid">
-            <div class="wallet-card metamask-card">
-                <div class="wallet-header">
-                    <div class="wallet-icon">🦊</div>
-                    <div class="wallet-info">
-                        <h3>MetaMask</h3>
-                        <p data-translate="metamask_subtitle">Most Popular Web3 Wallet</p>
-                    </div>
-                </div>
-                <div class="wallet-description" data-translate="metamask_description">
-                    Connect your MetaMask wallet to trade YeetCoin seamlessly. MetaMask provides secure access to decentralized applications and makes crypto transactions simple and safe.
-                </div>
-                <div class="wallet-features">
-                    <span class="wallet-feature" data-translate="secure">Secure</span>
-                    <span class="wallet-feature" data-translate="easy_to_use">Easy to Use</span>
-                    <span class="wallet-feature" data-translate="web3_ready">Web3 Ready</span>
-                </div>
-                <div class="wallet-actions">
-                    <a href="https://metamask.io" target="_blank" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
-                </div>
-            </div>
-
-            <div class="wallet-card trust-card">
-                <div class="wallet-header">
-                    <div class="wallet-icon">🔷</div>
-                    <div class="wallet-info">
-                        <h3>Trust Wallet</h3>
-                        <p data-translate="trust_subtitle">Mobile-First Crypto Wallet</p>
-                    </div>
-                </div>
-                <div class="wallet-description" data-translate="trust_description">
-                    Trade YeetCoin on the go with Trust Wallet. This mobile-first wallet supports thousands of cryptocurrencies and provides a seamless trading experience.
-                </div>
-                <div class="wallet-features">
-                    <span class="wallet-feature" data-translate="mobile_optimized">Mobile Optimized</span>
-                    <span class="wallet-feature" data-translate="multi_chain">Multi-Chain</span>
-                    <span class="wallet-feature" data-translate="user_friendly">User Friendly</span>
-                </div>
-                <div class="wallet-actions">
-                    <a href="https://trustwallet.com" target="_blank" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
-                </div>
-            </div>
-
-            <div class="wallet-card bitget-card">
-                <div class="wallet-header">
-                    <div class="wallet-icon">🅱️</div>
-                    <div class="wallet-info">
-                        <h3>Bitget Wallet</h3>
-                        <p data-translate="bitget_subtitle">World's Leading Exchange Wallet</p>
-                    </div>
-                </div>
-                <div class="wallet-description" data-translate="bitget_description">
-                    Access YeetCoin through Bitget Wallet with the backing of a leading cryptocurrency exchange. Enjoy low fees and high liquidity.
-                </div>
-                <div class="wallet-features">
-                    <span class="wallet-feature" data-translate="low_fees">Low Fees</span>
-                    <span class="wallet-feature" data-translate="high_liquidity">High Liquidity</span>
-                    <span class="wallet-feature" data-translate="trusted">Trusted</span>
-                </div>
-                <div class="wallet-actions">
-                    <a href="https://www.bitget.com" target="_blank" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
-                </div>
-            </div>
-
-            <div class="wallet-card okx-card">
-                <div class="wallet-header">
-                    <div class="wallet-icon">⭕</div>
-                    <div class="wallet-info">
-                        <h3>OKX Wallet</h3>
-                        <p data-translate="okx_subtitle">Advanced Trading Features</p>
-                    </div>
-                </div>
-                <div class="wallet-description" data-translate="okx_description">
-                    Experience advanced trading features with OKX Wallet. Perfect for professional traders who want to maximize their YeetCoin trading potential.
-                </div>
-                <div class="wallet-features">
-                    <span class="wallet-feature" data-translate="advanced_trading">Advanced Trading</span>
-                    <span class="wallet-feature" data-translate="professional">Professional</span>
-                    <span class="wallet-feature" data-translate="feature_rich">Feature Rich</span>
-                </div>
-                <div class="wallet-actions">
-                    <a href="https://www.okx.com" target="_blank" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features-section">
-        <h2 data-translate="why_choose">Why Choose <span class="highlight">YeetCoin</span>?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3 data-translate="blazing_fast">Blazing Fast</h3>
-                <p data-translate="blazing_fast_desc">Experience lightning-fast transactions and minimal fees, powered by a highly optimized blockchain.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3 data-translate="ironclad_security">Ironclad Security</h3>
-                <p data-translate="ironclad_security_desc">Your assets are protected by audited smart contracts and state-of-the-art security protocols.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">👥</div>
-                <h3 data-translate="vibrant_community">Vibrant Community</h3>
-                <p data-translate="vibrant_community_desc">Join a passionate and rapidly growing community of YeetCoin enthusiasts from around the globe.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Combined Tokenomics and Crypto Prices Section -->
-    <section id="tokenomics" class="combined-info-section">
-        <div class="combined-info-container">
-            <div class="info-left">
-                <h2 data-translate="cta_title">Ready to Join the <span class="highlight">YEET</span> Revolution?</h2>
-                <p data-translate="cta_description">Don't miss out on the next big thing in meme finance. Get your YEET today and be part of something extraordinary!</p>
-                <a href="#buy" class="cta-btn">
-                    ⭐ <span data-translate="get_started">Get Started with YeetCoin</span>
-                </a>
-            </div>
-            <div class="info-right">
-                <div class="info-card crypto-prices-card">
-                    <h3 data-translate="crypto_prices">Live Crypto Prices</h3>
-                    <div class="phone-mockup">
-                        <div class="phone-header">
-                            <div class="phone-time">9:41</div>
-                            <div class="phone-status">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                        <div class="phone-balance">
-                            <div class="amount">$2,432.72</div>
-                            <div class="change">+$25.01 (1.04% )</div>
-                        </div>
-                        <div class="crypto-list">
-                            <div class="crypto-item">
-                                <div class="crypto-info">
-                                    <div class="crypto-icon btc">₿</div>
-                                    <div class="crypto-name">Bitcoin (BTC)</div>
-                                </div>
-                                <div class="crypto-price">
-                                    <div class="price" id="btc-price">$114,946</div>
-                                    <div class="change">+4.2%</div>
-                                </div>
-                            </div>
-                            <div class="crypto-item">
-                                <div class="crypto-info">
-                                    <div class="crypto-icon eth">Ξ</div>
-                                    <div class="crypto-name">Ethereum (ETH)</div>
-                                </div>
-                                <div class="crypto-price">
-                                    <div class="price" id="eth-price">$2,840.58</div>
-                                    <div class="change">+5.8%</div>
-                                </div>
-                            </div>
-                            <div class="crypto-item">
-                                <div class="crypto-info">
-                                    <div class="crypto-icon bnb">B</div>
-                                    <div class="crypto-name">Binance Coin (BNB)</div>
-                                </div>
-                                <div class="crypto-price">
-                                    <div class="price" id="bnb-price">$678.72</div>
-                                    <div class="change">+3.1%</div>
-                                </div>
-                            </div>
+                <!-- Live Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="yeet-price">$0.00001234</div>
+                        <p class="stat-label" data-translate="current_price">Current Price</p>
+                        <div class="stat-change">
+                            📈 <span>+2.5% (24h)</span>
                         </div>
                     </div>
-                </div>
-                <div class="info-card tokenomics-card">
-                    <h3 data-translate="tokenomics_title">YeetCoin <span class="highlight">Tokenomics</span></h3>
-                    <div class="tokenomics-strips">
-                        <div class="tokenomics-strip">
-                            <div class="strip-left">
-                                <div class="strip-icon">💰</div>
-                                <div class="strip-info">
-                                    <h4 data-translate="total_supply">Total Supply</h4>
-                                    <p data-translate="total_supply_desc">21,000,000 YEET</p>
-                                </div>
-                            </div>
-                            <div class="strip-value">100%</div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="market-cap">$12.34M</div>
+                        <p class="stat-label" data-translate="market_cap">Market Cap</p>
+                        <div class="stat-change">
+                            🌍 <span data-translate="global_reach">Global Reach</span>
                         </div>
-                        <div class="tokenomics-strip">
-                            <div class="strip-left">
-                                <div class="strip-icon">🔒</div>
-                                <div class="strip-info">
-                                    <h4 data-translate="liquidity_pool">Liquidity Pool</h4>
-                                    <p data-translate="liquidity_pool_desc">50% - Locked for stability</p>
-                                </div>
-                            </div>
-                            <div class="strip-value">50%</div>
-                        </div>
-                        <div class="tokenomics-strip">
-                            <div class="strip-left">
-                                <div class="strip-icon">🎁</div>
-                                <div class="strip-info">
-                                    <h4 data-translate="community_rewards">Community Rewards</h4>
-                                    <p data-translate="community_rewards_desc">30% - Airdrops, contests, and staking</p>
-                                </div>
-                            </div>
-                            <div class="strip-value">30%</div>
-                        </div>
-                        <div class="tokenomics-strip">
-                            <div class="strip-left">
-                                <div class="strip-icon">📈</div>
-                                <div class="strip-info">
-                                    <h4 data-translate="development_marketing">Development & Marketing</h4>
-                                    <p data-translate="development_marketing_desc">20% - Future growth and global adoption</p>
-                                </div>
-                            </div>
-                            <div class="strip-value">20%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="holders">3</div>
+                        <p class="stat-label" data-translate="total_holders">Total Holders</p>
+                        <div class="stat-change">
+                            👥 <span data-translate="growing_community">Growing Community</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Wallets Section -->
+        <section id="wallets" class="wallets-section">
+            <h2 data-translate="supported_wallets">Supported <span class="highlight">Wallets</span></h2>
+            <div class="wallets-grid">
+                <div class="wallet-card metamask-card">
+                    <div class="wallet-header">
+                        <div class="wallet-icon">🦊</div>
+                        <div class="wallet-info">
+                            <h3>MetaMask</h3>
+                            <p data-translate="metamask_subtitle">Most Popular Web3 Wallet</p>
+                        </div>
+                    </div>
+                    <div class="wallet-description" data-translate="metamask_description">
+                        Connect your MetaMask wallet to trade YeetCoin seamlessly. MetaMask provides secure access to decentralized applications and makes crypto transactions simple and safe.
+                    </div>
+                    <div class="wallet-features">
+                        <span class="wallet-feature" data-translate="secure">Secure</span>
+                        <span class="wallet-feature" data-translate="easy_to_use">Easy to Use</span>
+                        <span class="wallet-feature" data-translate="web3_ready">Web3 Ready</span>
+                    </div>
+                    <div class="wallet-actions">
+                        <a href="https://metamask.io " target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
+                    </div>
+                </div>
+                <div class="wallet-card trust-card">
+                    <div class="wallet-header">
+                        <div class="wallet-icon">🔷</div>
+                        <div class="wallet-info">
+                            <h3>Trust Wallet</h3>
+                            <p data-translate="trust_subtitle">Mobile-First Crypto Wallet</p>
+                        </div>
+                    </div>
+                    <div class="wallet-description" data-translate="trust_description">
+                        Trade YeetCoin on the go with Trust Wallet. This mobile-first wallet supports thousands of cryptocurrencies and provides a seamless trading experience.
+                    </div>
+                    <div class="wallet-features">
+                        <span class="wallet-feature" data-translate="mobile_optimized">Mobile Optimized</span>
+                        <span class="wallet-feature" data-translate="multi_chain">Multi-Chain</span>
+                        <span class="wallet-feature" data-translate="user_friendly">User Friendly</span>
+                    </div>
+                    <div class="wallet-actions">
+                        <a href="https://trustwallet.com " target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
+                    </div>
+                </div>
+                <div class="wallet-card bitget-card">
+                    <div class="wallet-header">
+                        <div class="wallet-icon">🅱️</div>
+                        <div class="wallet-info">
+                            <h3>Bitget Wallet</h3>
+                            <p data-translate="bitget_subtitle">World's Leading Exchange Wallet</p>
+                        </div>
+                    </div>
+                    <div class="wallet-description" data-translate="bitget_description">
+                        Access YeetCoin through Bitget Wallet with the backing of a leading cryptocurrency exchange. Enjoy low fees and high liquidity.
+                    </div>
+                    <div class="wallet-features">
+                        <span class="wallet-feature" data-translate="low_fees">Low Fees</span>
+                        <span class="wallet-feature" data-translate="high_liquidity">High Liquidity</span>
+                        <span class="wallet-feature" data-translate="trusted">Trusted</span>
+                    </div>
+                    <div class="wallet-actions">
+                        <a href="https://www.bitget.com " target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
+                    </div>
+                </div>
+                <div class="wallet-card okx-card">
+                    <div class="wallet-header">
+                        <div class="wallet-icon">⭕</div>
+                        <div class="wallet-info">
+                            <h3>OKX Wallet</h3>
+                            <p data-translate="okx_subtitle">Advanced Trading Features</p>
+                        </div>
+                    </div>
+                    <div class="wallet-description" data-translate="okx_description">
+                        Experience advanced trading features with OKX Wallet. Perfect for professional traders who want to maximize their YeetCoin trading potential.
+                    </div>
+                    <div class="wallet-features">
+                        <span class="wallet-feature" data-translate="advanced_trading">Advanced Trading</span>
+                        <span class="wallet-feature" data-translate="professional">Professional</span>
+                        <span class="wallet-feature" data-translate="feature_rich">Feature Rich</span>
+                    </div>
+                    <div class="wallet-actions">
+                        <a href="https://www.okx.com " target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <h2 data-translate="why_choose">Why Choose <span class="highlight">YeetCoin</span>?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 data-translate="blazing_fast">Blazing Fast</h3>
+                    <p data-translate="blazing_fast_desc">Experience lightning-fast transactions and minimal fees, powered by a highly optimized blockchain.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 data-translate="ironclad_security">Ironclad Security</h3>
+                    <p data-translate="ironclad_security_desc">Your assets are protected by audited smart contracts and state-of-the-art security protocols.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3 data-translate="vibrant_community">Vibrant Community</h3>
+                    <p data-translate="vibrant_community_desc">Join a passionate and rapidly growing community of YeetCoin enthusiasts from around the globe.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Combined Tokenomics and Crypto Prices Section -->
+        <section id="tokenomics" class="combined-info-section">
+            <div class="combined-info-container">
+                <div class="info-left">
+                    <h2 data-translate="cta_title">Ready to Join the <span class="highlight">YEET</span> Revolution?</h2>
+                    <p data-translate="cta_description">Don't miss out on the next big thing in meme finance. Get your YEET today and be part of something extraordinary!</p>
+                    <a href="#buy" class="cta-btn">
+                        ⭐ <span data-translate="get_started">Get Started with YeetCoin</span>
+                    </a>
+                </div>
+                <div class="info-right">
+                    <div class="info-card crypto-prices-card">
+                        <h3 data-translate="crypto_prices">Live Crypto Prices</h3>
+                        <div class="phone-mockup">
+                            <div class="phone-header">
+                                <div class="phone-time">9:41</div>
+                                <div class="phone-status">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="phone-balance">
+                                <div class="amount">$2,432.72</div>
+                                <div class="change">+$25.01 (1.04%)</div>
+                            </div>
+                            <div class="crypto-list">
+                                <div class="crypto-item">
+                                    <div class="crypto-info">
+                                        <div class="crypto-icon btc">₿</div>
+                                        <div class="crypto-name">Bitcoin (BTC)</div>
+                                    </div>
+                                    <div class="crypto-price">
+                                        <div class="price" id="btc-price">$114,946</div>
+                                        <div class="change">+4.2%</div>
+                                    </div>
+                                </div>
+                                <div class="crypto-item">
+                                    <div class="crypto-info">
+                                        <div class="crypto-icon eth">Ξ</div>
+                                        <div class="crypto-name">Ethereum (ETH)</div>
+                                    </div>
+                                    <div class="crypto-price">
+                                        <div class="price" id="eth-price">$2,840.58</div>
+                                        <div class="change">+5.8%</div>
+                                    </div>
+                                </div>
+                                <div class="crypto-item">
+                                    <div class="crypto-info">
+                                        <div class="crypto-icon bnb">B</div>
+                                        <div class="crypto-name">Binance Coin (BNB)</div>
+                                    </div>
+                                    <div class="crypto-price">
+                                        <div class="price" id="bnb-price">$678.72</div>
+                                        <div class="change">+3.1%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-card tokenomics-card">
+                        <h3 data-translate="tokenomics_title">YeetCoin <span class="highlight">Tokenomics</span></h3>
+                        <div class="tokenomics-strips">
+                            <div class="tokenomics-strip">
+                                <div class="strip-left">
+                                    <div class="strip-icon">💰</div>
+                                    <div class="strip-info">
+                                        <h4 data-translate="total_supply">Total Supply</h4>
+                                        <p data-translate="total_supply_desc">21,000,000 YEET</p>
+                                    </div>
+                                </div>
+                                <div class="strip-value">100%</div>
+                            </div>
+                            <div class="tokenomics-strip">
+                                <div class="strip-left">
+                                    <div class="strip-icon">🔒</div>
+                                    <div class="strip-info">
+                                        <h4 data-translate="liquidity_pool">Liquidity Pool</h4>
+                                        <p data-translate="liquidity_pool_desc">50% - Locked for stability</p>
+                                    </div>
+                                </div>
+                                <div class="strip-value">50%</div>
+                            </div>
+                            <div class="tokenomics-strip">
+                                <div class="strip-left">
+                                    <div class="strip-icon">🎁</div>
+                                    <div class="strip-info">
+                                        <h4 data-translate="community_rewards">Community Rewards</h4>
+                                        <p data-translate="community_rewards_desc">30% - Airdrops, contests, and staking</p>
+                                    </div>
+                                </div>
+                                <div class="strip-value">30%</div>
+                            </div>
+                            <div class="tokenomics-strip">
+                                <div class="strip-left">
+                                    <div class="strip-icon">📈</div>
+                                    <div class="strip-info">
+                                        <h4 data-translate="development_marketing">Development & Marketing</h4>
+                                        <p data-translate="development_marketing_desc">20% - Future growth and global adoption</p>
+                                    </div>
+                                </div>
+                                <div class="strip-value">20%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
