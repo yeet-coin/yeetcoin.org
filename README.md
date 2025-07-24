@@ -13,7 +13,7 @@
 - **Type**: BEP20  
 - **Decimals**: 18  
 - **Status**: Active  
-- **Contract Address**: `0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79`  
+- **Contract Address**: `0x23090Dcb93710E2C8039DdC214E13997Bd15cC25`  
 - **Explorer**: [View on BscScan](https://bscscan.com/token/0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79)
 
 ## 📢 Description
