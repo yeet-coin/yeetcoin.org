@@ -2,12 +2,12 @@
   "name": "YeetCoin",
   "website": "https://yeetcoin.org",
   "description": "YeetCoin ($YEET) is a community-driven meme token on the Binance Smart Chain built for fun, hype, and high energy.",
-  "explorer": "https://bscscan.com/token/0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79",
+  "explorer": "https://bscscan.com/token/0x23090Dcb93710E2C8039DdC214E13997Bd15cC25",
   "type": "BEP20",
   "symbol": "YEET",
   "decimals": 18,
   "status": "active",
-  "id": "0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79",
+  "id": "0x23090Dcb93710E2C8039DdC214E13997Bd15cC25",
   "links": {
     "email": "mailto:yeet.coin@outlook.com",
     "website": "https://yeetcoin.org"
