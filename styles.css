@@ -1025,6 +1025,40 @@ footer {
 }
 
 /* Responsive Design */
+/* Large screens (desktops) - Base styles, min-width 1024px is handled by specific rules below if needed */
+
+@media (max-width: 1024px) {
+    /* Adjustments for medium screens (laptops, large tablets) */
+    .nav-container {
+        padding: 0 15px;
+    }
+    .hero-section {
+        padding: 60px 0 100px;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    .hero-section p {
+        font-size: 17px;
+    }
+    .wallets-section, .features-section, .combined-info-section {
+        padding: 60px 0;
+    }
+    .wallets-section h2, .features-section h2, .info-left h2 {
+        font-size: 2.2rem;
+    }
+    .info-left h2 {
+        font-size: 2.5rem;
+    }
+    .cta-btn {
+        padding: 16px 30px;
+        font-size: 1rem;
+    }
+    .tokenomics-strip {
+        padding: 16px 20px;
+    }
+}
+
 @media (max-width: 992px) {
     /* Combined Info Section back to single column for smaller screens */
     .combined-info-container {
@@ -1055,11 +1089,13 @@ footer {
     }
 
     .nav-links {
-        display: none;
+        display: none; /* Hide nav links on mobile */
     }
 
     .nav-container {
-        justify-content: center;
+        justify-content: center; /* Center trade button if nav links are hidden */
+        flex-wrap: wrap; /* Allow wrapping */
+        gap: 15px;
     }
 
     .trade-btn {
@@ -1112,15 +1148,53 @@ footer {
         font-size: 1.6rem;
     }
 
+    /* BEGIN specific phone-mockup adjustments for 768px and below */
     .phone-mockup {
-        width: 100%;
-        height: auto;
-        padding: 10px;
+        width: 90%; /* Adjusted for a bit more padding on very small screens */
+        max-width: 280px; /* Reduced max-width for phone-like appearance */
+        height: 520px; /* Adjusted height to maintain aspect ratio */
+        padding: 8px; /* Slightly less padding */
+        border-width: 6px; /* Thinner border */
+        box-shadow: 0 0 0 2px #555, 0 0 0 8px rgba(0,0,0,0.2); /* Adjusted outer shadow */
+    }
+    
+    .phone-header {
+        padding: 8px 15px; /* Reduced padding */
+        font-size: 12px; /* Smaller font size */
+    }
+
+    .phone-balance {
+        padding: 15px; /* Reduced padding */
+    }
+    .phone-balance .amount {
+        font-size: 1.8rem; /* Smaller font size */
+    }
+    .phone-balance .change {
+        font-size: 12px; /* Smaller font size */
+    }
+
+    .crypto-list {
+        padding: 10px; /* Reduced padding */
     }
 
     .crypto-item {
         padding: 10px 0;
     }
+    .crypto-icon {
+        width: 32px; /* Smaller icon size */
+        height: 32px;
+        font-size: 16px; /* Smaller icon font */
+    }
+    .crypto-name {
+        font-size: 14px; /* Smaller name font */
+    }
+    .crypto-price .price {
+        font-size: 14px; /* Smaller price font */
+    }
+    .crypto-price .change {
+        font-size: 11px; /* Smaller change font */
+    }
+    /* END specific phone-mockup adjustments for 768px and below */
 
     footer .footer-content {
         flex-direction: column;
@@ -1165,5 +1239,49 @@ footer {
     }
     .countdown-item {
         padding: 10px 15px;
+    }
+    .language-selector {
+        top: 10px;
+        right: 10px;
+        padding: 5px;
+    }
+    .language-selector select {
+        font-size: 12px;
+    }
+    /* Further adjustments for phone mockup on very small screens */
+    .phone-mockup {
+        width: 95%; /* Make it fill more width on very small screens */
+        max-width: 250px; /* Even smaller max-width */
+        height: 480px; /* Adjusted height */
+        border-width: 5px; /* Even thinner border */
+        box-shadow: 0 0 0 1px #555, 0 0 0 6px rgba(0,0,0,0.15); /* Finer shadow */
+    }
+    .phone-balance .amount {
+        font-size: 1.6rem;
+    }
+    .crypto-name {
+        font-size: 13px;
+    }
+    .crypto-price .price {
+        font-size: 13px;
+    }
+    .crypto-price .change {
+        font-size: 10px;
+    }
+    .chatbot-window {
+        bottom: 70px; /* Move up slightly from button */
+        height: 350px; /* Slightly smaller height */
+    }
+    .message {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    .chatbot-input input {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+    .chatbot-input button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
     }
 }
