@@ -8,15 +8,21 @@ canvas.height = window.innerHeight;
 let particlesArray = [];
 const numberOfParticles = 200;
 
-for (let i = 0; i < numberOfParticles; i++) {
-    particlesArray.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 3 + 1,
-        speedX: Math.random() * 1 - 0.5,
-        speedY: Math.random() * 1 - 0.5
-    });
+// Function to initialize or re-initialize particles
+function initializeParticles() {
+    particlesArray = [];
+    for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 3 + 1,
+            speedX: Math.random() * 1 - 0.5,
+            speedY: Math.random() * 1 - 0.5
+        });
+    }
 }
+
+initializeParticles(); // Initial call to populate particlesArray
 
 function animate() {
     ctx.fillStyle = "#0d0d0d";
@@ -29,6 +35,7 @@ function animate() {
         p.x += p.speedX;
         p.y += p.speedY;
         if (p.x < 0 || p.x > canvas.width || p.y < 0 || p.y > canvas.height) {
+            // Re-position particle if it goes off-screen
             p.x = Math.random() * canvas.width;
             p.y = Math.random() * canvas.height;
         }
@@ -42,6 +49,7 @@ animate();
 window.addEventListener('resize', function() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    initializeParticles(); // Re-initialize particles to spread them across the new canvas size
 });
 
 // Live Price Updater every 10 seconds
@@ -50,6 +58,11 @@ async function fetchCryptoPrices() {
         const proxyUrl = "https://api.allorigins.win/raw?url=";
         const apiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,binancecoin,ethereum,solana,ripple&vs_currencies=usd";
         const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
 
         document.getElementById("btc-price").textContent = data.bitcoin ? `$${data.bitcoin.usd.toLocaleString()}` : "N/A";
@@ -90,7 +103,10 @@ function initCountdown() {
             document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
             document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
         } else {
-            document.querySelector('.countdown-section').style.display = 'none';
+            const countdownSection = document.querySelector('.countdown-section');
+            if (countdownSection) {
+                countdownSection.style.display = 'none';
+            }
         }
     }
     
@@ -327,11 +343,11 @@ const translations = {
         growing_community: "Comunità in crescita",
         supported_wallets: "<span class=\"highlight\">Portafogli</span> supportati",
         metamask_subtitle: "Portafoglio Web3 più popolare",
-        metamask_description: "Connetti il tuo portafoglio MetaMask per scambiare YeetCoin senza problemi. MetaMask fornisce accesso sicuro alle applicazioni decentralizzate و rende le transazioni crypto semplici e sicure.",
+        metamask_description: "Connetti il tuo portafoglio MetaMask per scambiare YeetCoin senza problemi. MetaMask fornisce accesso sicuro alle applicazioni decentralizzate e rende le transazioni crypto semplici e sicure.",
         trust_subtitle: "Portafoglio crypto mobile-first",
-        trust_description: "Scambia YeetCoin in movimento con Trust Wallet. Questo portafoglio mobile supporta migliaيا di criptovalute و fornisce un'esperienza di trading senza soluzione di continuità.",
+        trust_description: "Scambia YeetCoin in movimento con Trust Wallet. Questo portafoglio mobile supporta migliaia di criptovalute e fornisce un'esperienza di trading senza soluzione di continuità.",
         bitget_subtitle: "Portafoglio di exchange leader mondiale",
-        bitget_description: "Accedi a YeetCoin tramite Bitget Wallet con il supporto di un exchange di criptovalute leader. Goditi commissioni basse و alta liquidità.",
+        bitget_description: "Accedi a YeetCoin tramite Bitget Wallet con il supporto di un exchange di criptovalute leader. Goditi commissioni basse e alta liquidità.",
         okx_subtitle: "Funzionalità di trading avanzate",
         okx_description: "Sperimenta funzionalità di trading avanzate con OKX Wallet. Perfetto per trader professionali che vogliono massimizzare il loro potenziale di trading YeetCoin.",
         secure: "Sicuro",
@@ -349,11 +365,11 @@ const translations = {
         open_wallet: "Apri",
         why_choose: "Perché scegliere <span class=\"highlight\">YeetCoin</span>?",
         blazing_fast: "Velocissimo",
-        blazing_fast_desc: "Sperimenta transazioni fulmineيه و commissioni minime, alimentate da una blockchain altamente ottimizzata.",
+        blazing_fast_desc: "Sperimenta transazioni fulminee e commissioni minime, alimentate da una blockchain altamente ottimizzata.",
         ironclad_security: "Sicurezza ferrea",
-        ironclad_security_desc: "I tuoi asset sono protetti da contratti intelligenti verificati و protocolli di sicurezza all'avanguardia.",
+        ironclad_security_desc: "I tuoi asset sono protetti da contratti intelligenti verificati e protocolli di sicurezza all'avanguardia.",
         vibrant_community: "Comunità vibrante",
-        vibrant_community_desc: "Unisciti a una comunità appassionata و in rapida crescita di appassionati YeetCoin da tutto il mondo.",
+        vibrant_community_desc: "Unisciti a una comunità appassionata e in rapida crescita di appassionati YeetCoin da tutto il mondo.",
         crypto_prices: "Prezzi crypto in tempo reale",
         tokenomics_title: "<span class=\"highlight\">Tokenomics</span> YeetCoin",
         total_supply: "Fornitura totale",
@@ -361,11 +377,11 @@ const translations = {
         liquidity_pool: "Pool di liquidità",
         liquidity_pool_desc: "10% dell'offerta totale - in sospeso di blocco",
         community_rewards: "Ricompense della comunità",
-        community_rewards_desc: "30% - Airdrop, concorsi و staking",
-        development_marketing: "Sviluppo و marketing",
-        development_marketing_desc: "20% - Crescita futura و adozione globale",
+        community_rewards_desc: "30% - Airdrop, concorsi e staking",
+        development_marketing: "Sviluppo e marketing",
+        development_marketing_desc: "20% - Crescita futura e adozione globale",
         cta_title: "Pronto a unirti alla rivoluzione <span class=\"highlight\">YEET</span>?",
-        cta_description: "Non perdere la prossima grande cosa nella finanza meme. Ottieni il tuo YEET oggi و fai parte di qualcosa di straordinario!",
+        cta_description: "Non perdere la prossima grande cosa nella finanza meme. Ottieni il tuo YEET oggi e fai parte di qualcosa di straordinario!",
         get_started: "Inizia con YeetCoin",
         all_rights_reserved: "Tutti i diritti riservati.",
         privacy_policy: "Informativa sulla privacy",
@@ -384,7 +400,7 @@ const translations = {
         tokenomics: "Tokenomics",
         trade_now: "Operar ahora",
         hero_title: "El futuro de las finanzas <span class=\"highlight\">Meme</span>",
-        hero_description: "YeetCoin combina el poder de la comunidad con tecnología blockchain de vanguardia para crear una experiencia financiera verdaderamente descentralizada و atractiva.",
+        hero_description: "YeetCoin combina el poder de la comunidad con tecnología blockchain de vanguardia para crear una experiencia financiera verdaderamente descentralizada y atractiva.",
         buy_pancakeswap: "Comprar en PancakeSwap",
         view_bscscan: "Ver en BSCScan",
         learn_more: "Saber más",
@@ -395,11 +411,11 @@ const translations = {
         growing_community: "Comunidad creciente",
         supported_wallets: "<span class=\"highlight\">Billeteras</span> compatibles",
         metamask_subtitle: "Billetera Web3 más popular",
-        metamask_description: "Conecta tu billetera MetaMask para intercambiar YeetCoin sin problemas. MetaMask proporciona acceso seguro a aplicaciones descentralizadas و hace que las transacciones crypto sean simples و seguras.",
+        metamask_description: "Conecta tu billetera MetaMask para intercambiar YeetCoin sin problemas. MetaMask proporciona acceso seguro a aplicaciones descentralizadas y hace que las transacciones crypto sean simples y seguras.",
         trust_subtitle: "Billetera crypto móvil primero",
-        trust_description: "Intercambia YeetCoin sobre la marcha con Trust Wallet. Esta billetera móvil soporta miles de criptomonedas و proporciona una experiencia de trading sin problemas.",
+        trust_description: "Intercambia YeetCoin sobre la marcha con Trust Wallet. Esta billetera móvil soporta miles de criptomonedas y proporciona una experiencia de trading sin problemas.",
         bitget_subtitle: "Billetera de intercambio líder mundial",
-        bitget_description: "Accede a YeetCoin a través de Bitget Wallet con el respaldo de un intercambio de criptomonedas líder. Disfruta de tarifas bajas و alta liquidez.",
+        bitget_description: "Accede a YeetCoin a través de Bitget Wallet con el respaldo de un intercambio de criptomonedas líder. Disfruta de tarifas bajas y alta liquidez.",
         okx_subtitle: "Características de trading avanzadas",
         okx_description: "Experimenta características de trading avanzadas con OKX Wallet. Perfecto para traders profesionales que quieren maximizar su potencial de trading YeetCoin.",
         secure: "Seguro",
@@ -417,11 +433,11 @@ const translations = {
         open_wallet: "Abrir",
         why_choose: "¿Por qué elegir <span class=\"highlight\">YeetCoin</span>?",
         blazing_fast: "Súper rápido",
-        blazing_fast_desc: "Experimenta transacciones súper rápidas و tarifas mínimas, impulsadas por una blockchain altamente optimizada.",
+        blazing_fast_desc: "Experimenta transacciones súper rápidas y tarifas mínimas, impulsadas por una blockchain altamente optimizada.",
         ironclad_security: "Seguridad férrea",
-        ironclad_security_desc: "Tus activos están protegidos por contratos inteligentes auditados و protocolos de seguridad de vanguardia.",
+        ironclad_security_desc: "Tus activos están protegidos por contratos inteligentes auditados y protocolos de seguridad de vanguardia.",
         vibrant_community: "Comunidad vibrante",
-        vibrant_community_desc: "Únete a una comunidad apasionada و de rápido crecimiento de entusiastas de YeetCoin de todo el mundo.",
+        vibrant_community_desc: "Únete a una comunidad apasionada y de rápido crecimiento de entusiastas de YeetCoin de todo el mundo.",
         crypto_prices: "Precios crypto en vivo",
         tokenomics_title: "<span class=\"highlight\">Tokenomics</span> YeetCoin",
         total_supply: "Suministro total",
@@ -429,11 +445,11 @@ const translations = {
         liquidity_pool: "Pool de liquidez",
         liquidity_pool_desc: "10% del suministro total - Pendiente de bloqueo",
         community_rewards: "Recompensas de la comunidad",
-        community_rewards_desc: "30% - Airdrops, concursos و staking",
-        development_marketing: "Desarrollo و marketing",
-        development_marketing_desc: "20% - Crecimiento futuro و adopción global",
+        community_rewards_desc: "30% - Airdrops, concursos y staking",
+        development_marketing: "Desarrollo y marketing",
+        development_marketing_desc: "20% - Crecimiento futuro y adopción global",
         cta_title: "¿Listo para unirte a la revolución <span class=\"highlight\">YEET</span>?",
-        cta_description: "¡No te pierdas lo próximo grande en finanzas meme. Obtén tu YEET hoy و sé parte de algo extraordinario!",
+        cta_description: "¡No te pierdas lo próximo grande en finanzas meme. Obtén tu YEET hoy y sé parte de algo extraordinario!",
         get_started: "Comenzar con YeetCoin",
         all_rights_reserved: "Todos los derechos reservados.",
         privacy_policy: "Política de privacidad",
@@ -452,7 +468,7 @@ const translations = {
         tokenomics: "Tokenomics",
         trade_now: "Jetzt handeln",
         hero_title: "Die Zukunft der <span class=\"highlight\">Meme</span>-Finanzen",
-        hero_description: "YeetCoin kombiniert die Kraft der Gemeinschaft mit modernster Blockchain-Technologie, um ein wirklich dezentrales و ansprechendes Finanzerlebnis zu schaffen.",
+        hero_description: "YeetCoin kombiniert die Kraft der Gemeinschaft mit modernster Blockchain-Technologie, um ein wirklich dezentrales und ansprechendes Finanzerlebnis zu schaffen.",
         buy_pancakeswap: "Auf PancakeSwap kaufen",
         view_bscscan: "Auf BSCScan anzeigen",
         learn_more: "Mehr erfahren",
@@ -463,11 +479,11 @@ const translations = {
         growing_community: "Wachsende Gemeinschaft",
         supported_wallets: "Unterstützte <span class=\"highlight\">Wallets</span>",
         metamask_subtitle: "Beliebteste Web3-Wallet",
-        metamask_description: "Verbinde deine MetaMask-Wallet, um YeetCoin nahtlos zu handeln. MetaMask bietet sicheren Zugang zu dezentralen Anwendungen و macht Krypto-Transaktionen einfach و sicher.",
+        metamask_description: "Verbinde deine MetaMask-Wallet, um YeetCoin nahtlos zu handeln. MetaMask bietet sicheren Zugang zu dezentralen Anwendungen und macht Krypto-Transaktionen einfach und sicher.",
         trust_subtitle: "Mobile-First Krypto-Wallet",
-        trust_description: "Handle YeetCoin unterwegs mit Trust Wallet. Diese mobile Wallet unterstützt Tausende von Kryptowährungen و bietet ein nahtloses Handelserlebnis.",
+        trust_description: "Handle YeetCoin unterwegs mit Trust Wallet. Diese mobile Wallet unterstützt Tausende von Kryptowährungen und bietet ein nahtloses Handelserlebnis.",
         bitget_subtitle: "Weltweit führende Exchange-Wallet",
-        bitget_description: "Greife auf YeetCoin über Bitget Wallet zu mit der Unterstützung einer führenden Kryptowährungs-Börse. Genieße niedrige Gebühren و hohe Liquidität.",
+        bitget_description: "Greife auf YeetCoin über Bitget Wallet zu mit der Unterstützung einer führenden Kryptowährungs-Börse. Genieße niedrige Gebühren und hohe Liquidität.",
         okx_subtitle: "Erweiterte Handelsfunktionen",
         okx_description: "Erlebe erweiterte Handelsfunktionen mit OKX Wallet. Perfekt für professionelle Trader, die ihr YeetCoin-Handelspotenzial maximieren möchten.",
         secure: "Sicher",
@@ -485,11 +501,11 @@ const translations = {
         open_wallet: "Öffnen",
         why_choose: "Warum <span class=\"highlight\">YeetCoin</span> wählen?",
         blazing_fast: "Blitzschnell",
-        blazing_fast_desc: "Erlebe blitzschnelle Transaktionen و minimale Gebühren, angetrieben von einer hochoptimierten Blockchain.",
+        blazing_fast_desc: "Erlebe blitzschnelle Transaktionen und minimale Gebühren, angetrieben von einer hochoptimierten Blockchain.",
         ironclad_security: "Eiserne Sicherheit",
-        ironclad_security_desc: "Deine Assets sind durch geprüfte Smart Contracts و modernste Sicherheitssicherheitsprotokolle geschützt.",
+        ironclad_security_desc: "Deine Assets sind durch geprüfte Smart Contracts und modernste Sicherheitssicherheitsprotokolle geschützt.",
         vibrant_community: "Lebendige Gemeinschaft",
-        vibrant_community_desc: "Tritt einer leidenschaftlichen و schnell wachsenden Gemeinschaft von YeetCoin-Enthusiasten aus der ganzen Welt bei.",
+        vibrant_community_desc: "Tritt einer leidenschaftlichen und schnell wachsenden Gemeinschaft von YeetCoin-Enthusiasten aus der ganzen Welt bei.",
         crypto_prices: "Live-Krypto-Preise",
         tokenomics_title: "YeetCoin <span class=\"highlight\">Tokenomics</span>",
         total_supply: "Gesamtangebot",
@@ -497,11 +513,11 @@ const translations = {
         liquidity_pool: "Liquiditätspool",
         liquidity_pool_desc: "10% des Gesamtangebots - ausstehende Sperre",
         community_rewards: "Gemeinschaftsbelohnungen",
-        community_rewards_desc: "30% - Airdrops, Wettbewerbe و Staking",
+        community_rewards_desc: "30% - Airdrops, Wettbewerbe und Staking",
         development_marketing: "Entwicklung & Marketing",
-        development_marketing_desc: "20% - Zukünftiges Wachstum و globale Adoption",
+        development_marketing_desc: "20% - Zukünftiges Wachstum und globale Adoption",
         cta_title: "Bereit, der <span class=\"highlight\">YEET</span>-Revolution beizutreten?",
-        cta_description: "Verpasse nicht das nächste große Ding in der Meme-Finanzwelt. Hol dir heute dein YEET و sei Teil von etwas Außergewöhnlichem!",
+        cta_description: "Verpasse nicht das nächste große Ding in der Meme-Finanzwelt. Hol dir heute dein YEET und sei Teil von etwas Außergewöhnlichem!",
         get_started: "Mit YeetCoin beginnen",
         all_rights_reserved: "Alle Rechte vorbehalten.",
         privacy_policy: "Datenschutzrichtlinie",
@@ -530,9 +546,13 @@ function updateYeetStats() {
     const marketCap = (Math.random() * 5 + 10).toFixed(2);
     const holders = Math.floor(Math.random() * 10 + 1);
     
-    document.getElementById('yeet-price').textContent = `$${price}`;
-    document.getElementById('market-cap').textContent = `$${marketCap}M`;
-    document.getElementById('holders').textContent = holders;
+    const yeetPriceElement = document.getElementById('yeet-price');
+    const marketCapElement = document.getElementById('market-cap');
+    const holdersElement = document.getElementById('holders');
+
+    if (yeetPriceElement) yeetPriceElement.textContent = `$${price}`;
+    if (marketCapElement) marketCapElement.textContent = `$${marketCap}M`;
+    if (holdersElement) holdersElement.textContent = holders;
 }
 
 // Create logo dynamically (remains unchanged as per request)
@@ -594,25 +614,32 @@ function initChatbot() {
     const chatbotSendButton = document.getElementById('chatbot-send-button');
 
     // Toggle chatbot window visibility
-    chatbotButton.addEventListener('click', () => {
-        chatbotWindow.classList.toggle('open');
-        if (chatbotWindow.classList.contains('open')) {
-            chatbotInputField.focus(); // Focus input when opened
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Scroll to bottom
-        }
-    });
+    if (chatbotButton && chatbotWindow && closeChatbot && chatbotMessages && chatbotInputField && chatbotSendButton) {
+        chatbotButton.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('open');
+            if (chatbotWindow.classList.contains('open')) {
+                chatbotInputField.focus(); // Focus input when opened
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Scroll to bottom
+            }
+        });
 
-    closeChatbot.addEventListener('click', () => {
-        chatbotWindow.classList.remove('open');
-    });
+        closeChatbot.addEventListener('click', () => {
+            chatbotWindow.classList.remove('open');
+        });
 
-    // Handle sending messages
-    chatbotSendButton.addEventListener('click', sendMessage);
-    chatbotInputField.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
+        // Handle sending messages
+        chatbotSendButton.addEventListener('click', sendMessage);
+        chatbotInputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    } else {
+        console.warn("One or more chatbot elements not found. Chatbot functionality may be limited or unavailable.");
+        // Potentially hide the chatbot button if elements are missing
+        if (chatbotButton) chatbotButton.style.display = 'none';
+    }
+
 
     function sendMessage() {
         const userText = chatbotInputField.value.trim();
@@ -642,14 +669,14 @@ function initChatbot() {
         const lowerCaseMessage = message.toLowerCase();
 
         // General Greetings and Thanks
-        if (lowerCaseMessage.includes("مرحبا") || lowerCaseMessage.includes("سلام") || lowerCaseMessage.includes("كيف حالك")) {
+        if (lowerCaseMessage.includes("مرحبا") || lowerCaseMessage.includes("سلام") || lowerCaseMessage.includes("كيف حالك") || lowerCaseMessage.includes("hi") || lowerCaseMessage.includes("hello")) {
             return "أهلاً بك! كيف يمكنني مساعدتك اليوم؟";
-        } else if (lowerCaseMessage.includes("شكرا") || lowerCaseMessage.includes("شكراً") || lowerCaseMessage.includes("بارك الله فيك")) {
+        } else if (lowerCaseMessage.includes("شكرا") || lowerCaseMessage.includes("thank you") || lowerCaseMessage.includes("بارك الله فيك")) {
             return "على الرحب والسعة! هل من أسئلة أخرى؟";
         }
 
         // About YeetCoin (Overview/Hero Section)
-        if (lowerCaseMessage.includes("yeetcoin") || lowerCaseMessage.includes("ما هي عملة yeetcoin") || lowerCaseMessage.includes("عن العملة") || lowerCaseMessage.includes("ما هذا الموقع")) {
+        if (lowerCaseMessage.includes("yeetcoin") || lowerCaseMessage.includes("ما هي عملة yeetcoin") || lowerCaseMessage.includes("عن العملة") || lowerCaseMessage.includes("ما هذا الموقع") || lowerCaseMessage.includes("what is yeetcoin")) {
             return "YeetCoin هي عملة ميم تعتمد على تقنية البلوكشين، تجمع بين قوة المجتمع والتكنولوجيا اللامركزية لتجربة مالية فريدة.";
         }
         if (lowerCaseMessage.includes("مستقبل") || lowerCaseMessage.includes("future of meme finance")) {
@@ -657,7 +684,7 @@ function initChatbot() {
         }
 
         // Buy Options & Contract
-        if (lowerCaseMessage.includes("شراء") || lowerCaseMessage.includes("كيف أشتري") || lowerCaseMessage.includes("طريقة الشراء") || lowerCaseMessage.includes("pancakeswap")) {
+        if (lowerCaseMessage.includes("شراء") || lowerCaseMessage.includes("كيف أشتري") || lowerCaseMessage.includes("طريقة الشراء") || lowerCaseMessage.includes("pancakeswap") || lowerCaseMessage.includes("buy")) {
             return "يمكنك شراء YeetCoin من خلال PancakeSwap. يرجى زيارة قسم 'Buy' في موقعنا للمزيد من التفاصيل.";
         }
         if (lowerCaseMessage.includes("bscscan") || lowerCaseMessage.includes("عرض على bscscan") || lowerCaseMessage.includes("العقد") || lowerCaseMessage.includes("contract address")) {
@@ -668,16 +695,19 @@ function initChatbot() {
         }
 
         // Live Stats Cards
-        if (lowerCaseMessage.includes("السعر الحالي") || lowerCaseMessage.includes("كم سعر yeetcoin")) {
-            const price = document.getElementById('yeet-price').textContent;
+        if (lowerCaseMessage.includes("السعر الحالي") || lowerCaseMessage.includes("كم سعر yeetcoin") || lowerCaseMessage.includes("current price")) {
+            const priceElement = document.getElementById('yeet-price');
+            const price = priceElement ? priceElement.textContent : "N/A";
             return `السعر الحالي لـ YeetCoin هو ${price}.`;
         }
         if (lowerCaseMessage.includes("القيمة السوقية") || lowerCaseMessage.includes("market cap")) {
-            const marketCap = document.getElementById('market-cap').textContent;
+            const marketCapElement = document.getElementById('market-cap');
+            const marketCap = marketCapElement ? marketCapElement.textContent : "N/A";
             return `القيمة السوقية لـ YeetCoin هي ${marketCap}.`;
         }
         if (lowerCaseMessage.includes("الحائزين") || lowerCaseMessage.includes("عدد الملاك") || lowerCaseMessage.includes("holders")) {
-            const holders = document.getElementById('holders').textContent;
+            const holdersElement = document.getElementById('holders');
+            const holders = holdersElement ? holdersElement.textContent : "N/A";
             return `إجمالي حائزي YeetCoin هو ${holders}.`;
         }
         if (lowerCaseMessage.includes("وصول عالمي") || lowerCaseMessage.includes("global reach")) {
@@ -688,7 +718,7 @@ function initChatbot() {
         }
 
         // Wallets Section
-        if (lowerCaseMessage.includes("المحافظ المدعومة") || lowerCaseMessage.includes("محفظة")) {
+        if (lowerCaseMessage.includes("المحافظ المدعومة") || lowerCaseMessage.includes("محفظة") || lowerCaseMessage.includes("wallets")) {
             return "تدعم YeetCoin محافظ شهيرة مثل MetaMask و Trust Wallet و Bitget Wallet و OKX Wallet.";
         }
         if (lowerCaseMessage.includes("metamask")) {
@@ -705,7 +735,7 @@ function initChatbot() {
         }
 
         // Features Section
-        if (lowerCaseMessage.includes("مميزات") || lowerCaseMessage.includes("لماذا اختار yeetcoin") || lowerCaseMessage.includes("ما يميز yeetcoin")) {
+        if (lowerCaseMessage.includes("مميزات") || lowerCaseMessage.includes("لماذا اختار yeetcoin") || lowerCaseMessage.includes("ما يميز yeetcoin") || lowerCaseMessage.includes("features")) {
             return "تتميز YeetCoin بسرعة المعاملات الفائقة، والأمان القوي، والمجتمع النابض بالحياة.";
         }
         if (lowerCaseMessage.includes("سريع") || lowerCaseMessage.includes("سرعة المعاملات") || lowerCaseMessage.includes("blazing fast")) {
@@ -759,35 +789,47 @@ function initChatbot() {
 
         // Live Crypto Prices (specific coins)
         if (lowerCaseMessage.includes("سعر بيتكوين") || lowerCaseMessage.includes("btc price")) {
-            const btcPrice = document.getElementById('btc-price').textContent;
+            const btcPriceElement = document.getElementById('btc-price');
+            const btcPrice = btcPriceElement ? btcPriceElement.textContent : "N/A";
             return `سعر البيتكوين (BTC) الحالي هو ${btcPrice}.`;
         }
         if (lowerCaseMessage.includes("سعر ايثيريوم") || lowerCaseMessage.includes("eth price")) {
-            const ethPrice = document.getElementById('eth-price').textContent;
+            const ethPriceElement = document.getElementById('eth-price');
+            const ethPrice = ethPriceElement ? ethPriceElement.textContent : "N/A";
             return `سعر الإيثيريوم (ETH) الحالي هو ${ethPrice}.`;
         }
         if (lowerCaseMessage.includes("سعر باينانس") || lowerCaseMessage.includes("bnb price")) {
-            const bnbPrice = document.getElementById('bnb-price').textContent;
+            const bnbPriceElement = document.getElementById('bnb-price');
+            const bnbPrice = bnbPriceElement ? bnbPriceElement.textContent : "N/A";
             return `سعر باينانس كوين (BNB) الحالي هو ${bnbPrice}.`;
         }
         if (lowerCaseMessage.includes("سعر سولانا") || lowerCaseMessage.includes("sol price")) {
-            const solPrice = document.getElementById('sol-price').textContent;
+            const solPriceElement = document.getElementById('sol-price');
+            const solPrice = solPriceElement ? solPriceElement.textContent : "N/A";
             return `سعر سولانا (SOL) الحالي هو ${solPrice}.`;
         }
         if (lowerCaseMessage.includes("سعر xrp") || lowerCaseMessage.includes("ريبل price")) {
-            const xrpPrice = document.getElementById('xrp-price').textContent;
+            const xrpPriceElement = document.getElementById('xrp-price');
+            const xrpPrice = xrpPriceElement ? xrpPriceElement.textContent : "N/A";
             return `سعر XRP الحالي هو ${xrpPrice}.`;
         }
 
         // Countdown
-        if (lowerCaseMessage.includes("متى الإطلاق") || lowerCaseMessage.includes("تاريخ الإطلاق") || lowerCaseMessage.includes("عداد الإطلاق")) {
-            const days = document.getElementById('days').textContent;
-            const hours = document.getElementById('hours').textContent;
-            const minutes = document.getElementById('minutes').textContent;
-            const seconds = document.getElementById('seconds').textContent;
-            if (document.querySelector('.countdown-section').style.display === 'none') {
+        if (lowerCaseMessage.includes("متى الإطلاق") || lowerCaseMessage.includes("تاريخ الإطلاق") || lowerCaseMessage.includes("عداد الإطلاق") || lowerCaseMessage.includes("launch countdown")) {
+            const countdownSection = document.querySelector('.countdown-section');
+            if (countdownSection && countdownSection.style.display === 'none') {
                 return "لقد تم إطلاق العملة بالفعل! يمكنك الآن التداول.";
             }
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+
+            const days = daysElement ? daysElement.textContent : "00";
+            const hours = hoursElement ? hoursElement.textContent : "00";
+            const minutes = minutesElement ? minutesElement.textContent : "00";
+            const seconds = secondsElement ? secondsElement.textContent : "00";
+
             return `المتبقي للإطلاق: ${days} يوم، ${hours} ساعة، ${minutes} دقيقة، ${seconds} ثانية.`;
         }
 
