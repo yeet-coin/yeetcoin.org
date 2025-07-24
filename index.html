@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Language Selector -->
     <div class="language-selector">
         <select id="language-select" onchange="changeLanguage()">
             <option value="en">🇺🇸 English</option>
@@ -22,13 +21,12 @@
             <option value="it">🇮🇹 Italiano</option>
             <option value="es">🇪🇸 Español</option>
             <option value="de">🇩🇪 Deutsch</option>
+            <option value="ar">🇸🇦 العربية</option>
         </select>
     </div>
 
-    <!-- Background Canvas -->
     <canvas id="bg"></canvas>
 
-    <!-- Countdown Section -->
     <section class="countdown-section">
         <div class="countdown-container">
             <div class="countdown-text" data-translate="launch_countdown">🚀 Launch Countdown</div>
@@ -53,7 +51,6 @@
         </div>
     </section>
 
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="logo-section">
@@ -70,7 +67,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <main>
         <section id="overview" class="hero-section">
             <div class="hero-content">
@@ -78,12 +74,11 @@
                 <h1 data-translate="hero_title">The Future of <span class="highlight">Meme</span> Finance</h1>
                 <p data-translate="hero_description">YeetCoin combines the power of community with cutting-edge blockchain technology to create a truly decentralized and engaging financial experience.</p>
 
-                <!-- Buy Options -->
                 <div class="buy-options" id="buy">
-                    <a href=" https://pancakeswap.finance/swap?outputCurrency=0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79" target="_blank" rel="noopener noreferrer" class="buy-option">
+                    <a href="https://pancakeswap.finance/swap?outputCurrency=0x23090Dcb93710E2C8039DdC214E13997Bd15cC25" target="_blank" rel="noopener noreferrer" class="buy-option">
                         🥞 <span data-translate="buy_pancakeswap">Buy on PancakeSwap</span>
                     </a>
-                    <a href=" https://bscscan.com/token/0xf7632CFa2A6791D885136DAd93CC96aA9AdEcA79 " target="_blank" rel="noopener noreferrer" class="buy-option">
+                    <a href="https://bscscan.com/token/0x23090Dcb93710E2C8039DdC214E13997Bd15cC25" target="_blank" rel="noopener noreferrer" class="buy-option">
                         🔍 <span data-translate="view_bscscan">View on BSCScan</span>
                     </a>
                 </div>
@@ -92,7 +87,6 @@
                     <span data-translate="learn_more">Learn More</span> →
                 </a>
 
-                <!-- Live Stats Cards -->
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-value" id="yeet-price">$0.00001234</div>
@@ -119,7 +113,6 @@
             </div>
         </section>
 
-        <!-- Wallets Section -->
         <section id="wallets" class="wallets-section">
             <h2 data-translate="supported_wallets">Supported <span class="highlight">Wallets</span></h2>
             <div class="wallets-grid">
@@ -140,7 +133,7 @@
                         <span class="wallet-feature" data-translate="web3_ready">Web3 Ready</span>
                     </div>
                     <div class="wallet-actions">
-                        <a href="https://metamask.io " target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
+                        <a href="https://metamask.io" target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">Open</a>
                     </div>
                 </div>
                 <div class="wallet-card trust-card">
@@ -160,7 +153,7 @@
                         <span class="wallet-feature" data-translate="user_friendly">User Friendly</span>
                     </div>
                     <div class="wallet-actions">
-                        <a href="https://trustwallet.com " target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
+                        <a href="https://trustwallet.com" target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">Open</a>
                     </div>
                 </div>
                 <div class="wallet-card bitget-card">
@@ -180,7 +173,7 @@
                         <span class="wallet-feature" data-translate="trusted">Trusted</span>
                     </div>
                     <div class="wallet-actions">
-                        <a href="https://www.bitget.com " target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
+                        <a href="https://www.bitget.com" target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">Open</a>
                     </div>
                 </div>
                 <div class="wallet-card okx-card">
@@ -200,13 +193,12 @@
                         <span class="wallet-feature" data-translate="feature_rich">Feature Rich</span>
                     </div>
                     <div class="wallet-actions">
-                        <a href="https://www.okx.com " target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">فتح</a>
+                        <a href="https://www.okx.com" target="_blank" rel="noopener noreferrer" class="wallet-open-btn" data-translate="open_wallet">Open</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
         <section id="features" class="features-section">
             <h2 data-translate="why_choose">Why Choose <span class="highlight">YeetCoin</span>?</h2>
             <div class="features-grid">
@@ -228,17 +220,64 @@
             </div>
         </section>
 
-        <!-- Combined Tokenomics and Crypto Prices Section -->
         <section id="tokenomics" class="combined-info-section">
             <div class="combined-info-container">
-                <div class="info-left">
-                    <h2 data-translate="cta_title">Ready to Join the <span class="highlight">YEET</span> Revolution?</h2>
-                    <p data-translate="cta_description">Don't miss out on the next big thing in meme finance. Get your YEET today and be part of something extraordinary!</p>
-                    <a href="#buy" class="cta-btn">
-                        ⭐ <span data-translate="get_started">Get Started with YeetCoin</span>
-                    </a>
+                <div class="info-column-left">
+                    <div class="info-card tokenomics-card">
+                        <h3 data-translate="tokenomics_title">YeetCoin <span class="highlight">Tokenomics</span></h3>
+                        <div class="tokenomics-strips">
+                            <div class="tokenomics-strip">
+                                <div class="strip-left">
+                                    <div class="strip-icon">💰</div>
+                                    <div class="strip-info">
+                                        <h4 data-translate="total_supply">Total Supply</h4>
+                                        <p data-translate="total_supply_desc">1,000,000 YEET</p>
+                                    </div>
+                                </div>
+                                <div class="strip-value">100%</div>
+                            </div>
+                            <div class="tokenomics-strip">
+                                <div class="strip-left">
+                                    <div class="strip-icon">🔒</div>
+                                    <div class="strip-info">
+                                        <h4 data-translate="liquidity_pool">Liquidity Pool</h4>
+                                        <p data-translate="liquidity_pool_desc">10% من العرض الكلي - بانتظار القفل</p>
+                                    </div>
+                                </div>
+                                <div class="strip-value">10%</div>
+                            </div>
+                            <div class="tokenomics-strip">
+                                <div class="strip-left">
+                                    <div class="strip-icon">🎁</div>
+                                    <div class="strip-info">
+                                        <h4 data-translate="community_rewards">Community Rewards</h4>
+                                        <p data-translate="community_rewards_desc">30% - Airdrops, contests, and staking</p>
+                                    </div>
+                                </div>
+                                <div class="strip-value">30%</div>
+                            </div>
+                            <div class="tokenomics-strip">
+                                <div class="strip-left">
+                                    <div class="strip-icon">📈</div>
+                                    <div class="strip-info">
+                                        <h4 data-translate="development_marketing">Development & Marketing</h4>
+                                        <p data-translate="development_marketing_desc">20% - Future growth and global adoption</p>
+                                    </div>
+                                </div>
+                                <div class="strip-value">20%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-left">
+                        <h2 data-translate="cta_title">Ready to Join the <span class="highlight">YEET</span> Revolution?</h2>
+                        <p data-translate="cta_description">Don't miss out on the next big thing in meme finance. Get your YEET today and be part of something extraordinary!</p>
+                        <a href="#buy" class="cta-btn">
+                            ⭐ <span data-translate="get_started">Get Started with YeetCoin</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="info-right">
+
+                <div class="info-column-right">
                     <div class="info-card crypto-prices-card">
                         <h3 data-translate="crypto_prices">Live Crypto Prices</h3>
                         <div class="phone-mockup">
@@ -285,51 +324,26 @@
                                         <div class="change">+3.1%</div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="info-card tokenomics-card">
-                        <h3 data-translate="tokenomics_title">YeetCoin <span class="highlight">Tokenomics</span></h3>
-                        <div class="tokenomics-strips">
-                            <div class="tokenomics-strip">
-                                <div class="strip-left">
-                                    <div class="strip-icon">💰</div>
-                                    <div class="strip-info">
-                                        <h4 data-translate="total_supply">Total Supply</h4>
-                                        <p data-translate="total_supply_desc">21,000,000 YEET</p>
+                                <div class="crypto-item">
+                                    <div class="crypto-info">
+                                        <div class="crypto-icon sol">S</div>
+                                        <div class="crypto-name">Solana (SOL)</div>
+                                    </div>
+                                    <div class="crypto-price">
+                                        <div class="price" id="sol-price">$95.50</div>
+                                        <div class="change">+7.2%</div>
                                     </div>
                                 </div>
-                                <div class="strip-value">100%</div>
-                            </div>
-                            <div class="tokenomics-strip">
-                                <div class="strip-left">
-                                    <div class="strip-icon">🔒</div>
-                                    <div class="strip-info">
-                                        <h4 data-translate="liquidity_pool">Liquidity Pool</h4>
-                                        <p data-translate="liquidity_pool_desc">50% - Locked for stability</p>
+                                <div class="crypto-item">
+                                    <div class="crypto-info">
+                                        <div class="crypto-icon xrp">X</div>
+                                        <div class="crypto-name">XRP (XRP)</div>
+                                    </div>
+                                    <div class="crypto-price">
+                                        <div class="price" id="xrp-price">$0.55</div>
+                                        <div class="change">+2.8%</div>
                                     </div>
                                 </div>
-                                <div class="strip-value">50%</div>
-                            </div>
-                            <div class="tokenomics-strip">
-                                <div class="strip-left">
-                                    <div class="strip-icon">🎁</div>
-                                    <div class="strip-info">
-                                        <h4 data-translate="community_rewards">Community Rewards</h4>
-                                        <p data-translate="community_rewards_desc">30% - Airdrops, contests, and staking</p>
-                                    </div>
-                                </div>
-                                <div class="strip-value">30%</div>
-                            </div>
-                            <div class="tokenomics-strip">
-                                <div class="strip-left">
-                                    <div class="strip-icon">📈</div>
-                                    <div class="strip-info">
-                                        <h4 data-translate="development_marketing">Development & Marketing</h4>
-                                        <p data-translate="development_marketing_desc">20% - Future growth and global adoption</p>
-                                    </div>
-                                </div>
-                                <div class="strip-value">20%</div>
                             </div>
                         </div>
                     </div>
@@ -338,7 +352,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div>&copy; 2025 YeetCoin. <span data-translate="all_rights_reserved">All rights reserved.</span></div>
@@ -349,6 +362,23 @@
             </div>
         </div>
     </footer>
+
+    <div class="chatbot-button" id="chatbot-button">
+        💬
+    </div>
+    <div class="chatbot-window" id="chatbot-window">
+        <div class="chatbot-header">
+            <h3>YeetBot</h3>
+            <span class="close-chatbot" id="close-chatbot">&times;</span>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message bot-message">مرحباً! كيف يمكنني مساعدتك اليوم؟</div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input-field" placeholder="اكتب رسالتك...">
+            <button id="chatbot-send-button">إرسال</button>
+        </div>
+    </div>
 
     <script src="scripts.js"></script>
 </body>
