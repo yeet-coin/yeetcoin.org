@@ -27,6 +27,7 @@ Want to support or build with us? Fork the repo, improve the code, or join the Y
 ## 📬 Contact
 
 For inquiries: [yeet.coin@outlook.com](mailto:yeet.coin@outlook.com)
+**X (Twitter)**: [@yeetXcoin](https://x.com/yeetXcoin)
 
 ---
 
