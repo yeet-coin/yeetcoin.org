@@ -866,17 +866,37 @@ footer {
 .footer-links {
     display: flex;
     gap: 24px;
+    /* Added for X icon alignment */
+    align-items: center; /* Ensures vertical alignment of links and icon/text */
+    flex-wrap: wrap; /* Allows links to wrap on smaller screens */
+    justify-content: center; /* Centers items if they wrap */
 }
 
 .footer-links a {
     color: #39FF14;
     text-decoration: none;
     transition: color 0.3s;
+    /* Added for consistent styling of new social link */
+    /* display: inline-flex; */ /* Not strictly needed if no icon, but harmless */
+    /* align-items: center; */ /* Not strictly needed if no icon, but harmless */
+    /* gap: 5px; */ /* Not strictly needed if no icon, but harmless */
 }
 
 .footer-links a:hover {
     color: #00C9FF;
 }
+
+/* START: New Styles for X (Twitter) Link in Footer - Adjusted for text only */
+/* .footer-links .x-link removed because it was an empty ruleset */
+
+/* Removed .social-icon styles as no image is used */
+
+.footer-links .social-text {
+    /* Kept this class in HTML just in case you want to style the @yeetXcoin text specifically */
+    font-size: 14px; /* Ensure text size is consistent with other footer links */
+    white-space: nowrap; /* Prevent username from breaking */
+}
+/* END: New Styles for X (Twitter) Link in Footer */
 
 /* Chatbot Styles */
 .chatbot-button {
@@ -1186,13 +1206,13 @@ footer {
         font-size: 16px; /* Smaller icon font */
     }
     .crypto-name {
-        font-size: 14px; /* Smaller name font */
+        font-size: 14px;
     }
     .crypto-price .price {
-        font-size: 14px; /* Smaller price font */
+        font-size: 14px;
     }
     .crypto-price .change {
-        font-size: 11px; /* Smaller change font */
+        font-size: 11px;
     }
     /* END specific phone-mockup adjustments for 768px and below */
 
